@@ -12,7 +12,7 @@ DINGTALK_WEBHOOK = os.getenv('DINGTALK_WEBHOOK')
 
 def get_location_id(location_name):
     """获取城市区域LocationID"""
-    url = f"https://geoapi.qweather.com/v2/city/lookup?location={location_name}&key={HEFENG_KEY}"
+    url = f"https://qm3yfqrqux.re.qweatherapi.com/geo/v2/city/lookup?location={location_name}&key={HEFENG_KEY}"
     res = requests.get(url).json()
     if res['code'] == '200':
         return res['location'][0]['id']
@@ -20,7 +20,7 @@ def get_location_id(location_name):
 
 def get_weather_report(location_id, days=1):
     """获取天气预报"""
-    url = f"https://devapi.qweather.com/v7/weather/{days}d?location={location_id}&key={HEFENG_KEY}"
+    url = f"https://qm3yfqrqux.re.qweatherapi.com/v7/weather/{days}d?location={location_id}&key={HEFENG_KEY}"
     res = requests.get(url).json()
     if res['code'] != '200':
         raise Exception(f"天气查询失败: {res}")
