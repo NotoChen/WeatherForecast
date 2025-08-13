@@ -1,0 +1,27 @@
+name: Daily Weather Report
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # UTC时间00:00 (北京时间08:00)
+  workflow_dispatch:     # 支持手动触发
+
+jobs:
+  weather-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        
+      - name: Run Weather Bot
+        env:
+          HEFENG_API_KEY: ${{ secrets.HEFENG_API_KEY }}
+          DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
+        run: python weather_bot.py
