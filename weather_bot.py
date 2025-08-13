@@ -32,13 +32,13 @@ def get_weather_report(location_id, days=1):
         date = datetime.strptime(day['fxDate'], '%Y-%m-%d')
         weekday = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"][date.weekday()]
         report = (
-            f"📅 **{date.month}月{date.day}日 ({weekday})**\n"
-            f"☀️ 白天: {day['textDay']} | 🌙 夜间: {day['textNight']}\n"
-            f"🌡️ 温度: {day['tempMin']}℃ ~ {day['tempMax']}℃\n"
-            f"💨 风力: {day['windDirDay']}{day['windScaleDay']}级\n"
-            f"💧 湿度: {day['humidity']}% | ☔ 降水: {day['precip']}mm\n"
-            f"🌅 日出: {day['sunrise']} | 🌇 日落: {day['sunset']}\n"
-            "──────────────────────────────"
+            f"📅 **{date.month}月{date.day}日 ({weekday})**\n\n"
+            f"☀️ 白天: {day['textDay']} | 🌙 夜间: {day['textNight']}\n\n"
+            f"🌡️ 温度: {day['tempMin']}℃ ~ {day['tempMax']}℃\n\n"
+            f"💨 风力: {day['windDirDay']}{day['windScaleDay']}级\n\n"
+            f"💧 湿度: {day['humidity']}% | ☔ 降水: {day['precip']}mm\n\n"
+            f"🌅 日出: {day['sunrise']} | 🌇 日落: {day['sunset']}\n\n"
+            "──────────\n\n"
         )
         reports.append(report)
     return "\n".join(reports)
