@@ -60,10 +60,12 @@ if __name__ == "__main__":
         try:
             loc_id = get_location_id(area['name'])
             report = get_weather_report(loc_id, area.get('days', 1))
+            print(report)
             all_reports.append(f"## 🌍 **{area['name']}**\n{report}")
         except Exception as e:
             all_reports.append(f"❌ {area['name']}播报失败: {str(e)}")
     
     final_report = "\n\n".join(all_reports)
+    print(final_report)
     send_dingtalk(final_report)
     print("天气播报发送成功!")
