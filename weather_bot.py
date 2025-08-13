@@ -38,7 +38,7 @@ def get_weather_report(location_id, days=1):
             f"💨 风力: {day['windDirDay']}{day['windScaleDay']}级\n"
             f"💧 湿度: {day['humidity']}% | ☔ 降水: {day['precip']}mm\n"
             f"🌅 日出: {day['sunrise']} | 🌇 日落: {day['sunset']}\n"
-            "─" * 30
+            "──────────────────────────────"
         )
         reports.append(report)
     return "\n".join(reports)
